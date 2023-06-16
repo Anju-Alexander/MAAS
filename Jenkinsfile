@@ -34,8 +34,9 @@ pipeline {
                                 sh 'git commit -m "updated Repo A version"'
                                 sh 'git push -u repo_a_push latest-\"${BUILD_NUMBER}\"'
                                 sh 'git remote rm repo_a_push'
+                                println("[WARNING] Updates are available to CustomJar!!")                                
                                 slackSend channel: 'repo-a-notifications', message: "Latest build of Repo A has been successful and it is present in branch latest-${BUILD_NUMBER}!!", tokenCredentialId: 'b4c53875-29c5-4f3a-a5dc-5a97790ff44e'
-                                
+                                slackSend channel: 'repo-a-notifications', message: "[WARNING] Updates are available to CustomJar!!", tokenCredentialId: 'b4c53875-29c5-4f3a-a5dc-5a97790ff44e'
                                
                             }
                             else {
