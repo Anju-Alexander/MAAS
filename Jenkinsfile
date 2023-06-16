@@ -11,7 +11,7 @@ pipeline {
             }
         
                
-            
+        
           
             stage('Update, Build & Push')
             {
