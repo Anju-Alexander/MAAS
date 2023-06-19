@@ -34,7 +34,7 @@ pipeline {
                                 sh 'git commit -m "updated Repo A version"'
                                 sh 'git push -u repo_a_push latest-\"${BUILD_NUMBER}\"'
                                 sh 'git remote rm repo_a_push'
-                                slackSend channel: 'repo-a-notifications', message: "Latest build of Repo A has been successful and it is present in branch latest-${BUILD_NUMBER}!!", tokenCredentialId: 'b4c53875-29c5-4f3a-a5dc-5a97790ff44e'
+                                slackSend channel: 'repo-a-notifications', message: "Latest build of MAAS Repo has been successful and it is present in branch latest-${BUILD_NUMBER}!!", tokenCredentialId: 'b4c53875-29c5-4f3a-a5dc-5a97790ff44e'
                                 println("[WARNING] Updates are available to CustomJar!!")
                                 slackSend channel: 'repo-a-notifications', message: "[WARNING] Updates are available to CustomJar!!", tokenCredentialId: 'b4c53875-29c5-4f3a-a5dc-5a97790ff44e'
 
@@ -65,8 +65,12 @@ pipeline {
         always {
           echo "I will always execute this!"      
                                       
-
         
-        }   
+        } 
+      failure {
+            echo 'failed:('
+            slackSend channel: 'repo-a-notifications', message: "Latest build of MAAS Repo has failed!!", tokenCredentialId: 'b4c53875-29c5-4f3a-a5dc-5a97790ff44e'
+
+        }
       }
 }
